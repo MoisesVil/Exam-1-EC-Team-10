@@ -8,5 +8,11 @@ namespace Exam_1_EC
 {
     internal class Controller
     {
+        public int test = 23874;
+
+        public Controller(int i)
+        {
+            test = i;
+        }
     }
 }
