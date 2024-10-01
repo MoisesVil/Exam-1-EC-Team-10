@@ -1,6 +1,6 @@
 ﻿namespace Exam_1_EC
 {
-    partial class LibraryView
+    partial class BookView
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // LibraryView
+            // BookView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "LibraryView";
-            this.Text = "Library View";
+            this.Name = "BookView";
+            this.Text = "Book View";
             this.ResumeLayout(false);
 
         }
@@ -44,4 +44,3 @@
         #endregion
     }
 }
-
