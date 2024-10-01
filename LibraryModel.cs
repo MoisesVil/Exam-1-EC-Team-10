@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exam_1_EC
 {
-    internal class LibraryModel
+    public class LibraryModel
     {
     }
 }

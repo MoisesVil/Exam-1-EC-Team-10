@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Exam_1_EC
 {
-    internal class State
+    public enum State
     {
+        Open,
+        Closed
     }
 }

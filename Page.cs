@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Exam_1_EC
 {
-    internal class Page
+    public class Page
     {
+        private int pageNum;
+        private string pageTxt;
+        private bool isBookmarked;
     }
 }
