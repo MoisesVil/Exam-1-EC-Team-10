@@ -62,7 +62,7 @@ namespace Exam_1_EC
         /// <param name="isbn">Book being read</param>
         public void GoToPage(int page, string isbn)
         {
-
+            m.GetBookData(isbn).CurrPage = page;
         }
     }
 }
