@@ -8,11 +8,26 @@ namespace Exam_1_EC
 {
     internal class Controller
     {
-        public int test = 23874;
+        public LibraryModel m;
 
-        public Controller(int i)
+        public Controller()
         {
-            test = i;
+            
+        }
+
+        public void FlipPage(string isbn)
+        {
+
+        }
+
+        public void SetBookmark(int page, string isbn)
+        {
+
+        }
+
+        public void GoToPage(int page, string isbn)
+        {
+
         }
     }
 }

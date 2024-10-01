@@ -6,6 +6,14 @@ using System.Windows.Forms;
 
 namespace Exam_1_EC
 {
+    public delegate void SyncLibrary();
+
+    public delegate void FlipPage(string isbn);
+
+    public delegate void SetBookMark(int page, string isbn);
+
+    public delegate void GoToPage(int page, string isbn);
+
     internal static class Program
     {
         /// <summary>
