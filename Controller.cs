@@ -10,21 +10,56 @@ namespace Exam_1_EC
     {
         public LibraryModel m;
 
-        public Controller()
+        /// <summary>
+        /// Constructor for the Controller Class
+        /// </summary>
+        /// <param name="model">Model to be used</param>
+        public Controller(LibraryModel model)
         {
-            
+            this.m = model;
         }
 
-        public void FlipPage(string isbn)
+        /// <summary>
+        /// Method to flip a page in a book
+        /// </summary>
+        /// <param name="isbn">Book being read</param>
+        public void FlipPage(string isbn, bool flipRight)
         {
+            Book b = m.GetBookData(isbn);
 
+            if (flipRight && (b.CurrPage + 1 <= b.pages.Count))
+            {
+                b.CurrPage += 1;
+            }
+            else if (!flipRight && (b.CurrPage - 1 >= 0))
+            {
+                b.CurrPage -= 1;
+            }
         }
 
+        /// <summary>
+        /// Set a bookmark in certain page in a book
+        /// </summary>
+        /// <param name="page">Page to set the bookmark on</param>
+        /// <param name="isbn">Book to set the bookmark in</param>
         public void SetBookmark(int page, string isbn)
         {
+            Book b = m.GetBookData(isbn);
 
+            if (b.bookmarkAmount < 5)
+            {
+                //remove bookmark
+                if (b.pages.ElementAt(b.CurrPage - 1).isBookmarked == true) b.pages.ElementAt(b.CurrPage - 1).isBookmarked = false;
+                //set bookmark
+                if (b.pages.ElementAt(b.CurrPage - 1).isBookmarked == false) b.pages.ElementAt(b.CurrPage - 1).isBookmarked = true;
+            }
         }
 
+        /// <summary>
+        /// Go to a certain page in a book
+        /// </summary>
+        /// <param name="page">Page to go to</param>
+        /// <param name="isbn">Book being read</param>
         public void GoToPage(int page, string isbn)
         {
 

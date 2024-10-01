@@ -16,6 +16,7 @@ namespace Exam_1_EC
         public List<Page> pages;
         public int bookmarkAmount;
         public string isbn;
+        public int CurrPage;
 
         /// <summary>
         /// overridden toString method 
