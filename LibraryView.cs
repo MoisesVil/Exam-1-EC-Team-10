@@ -22,15 +22,10 @@ namespace Exam_1_EC
 
         private SyncLibrary syncLibHan;
         private LibraryModel libraryModel;
-       
-        private void listCloudLibSelectedBook(object sender, EventArgs e)
-        {
-
-        }
 
         private void addToLibBtnClick(object sender, EventArgs e)
         {
-            //syncLibHan(listCloudLib.SelectedValue);
+            syncLibHan(listCloudLib.SelectedValue);
         }
         public void fillCloudLibOnOpen()
         {
