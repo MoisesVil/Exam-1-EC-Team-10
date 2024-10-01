@@ -19,6 +19,7 @@ namespace Exam_1_EC
         /// </summary>
         public LibraryModel() 
         {
+            List<Page> loadPages = new List<Page>();
             if (File.Exists("bookLog.txt")) 
             {
                 using (StreamReader sr = new StreamReader("bookLog.txt"))
@@ -27,12 +28,19 @@ namespace Exam_1_EC
                     {
                         string line = sr.ReadLine();
                         string[] split = line.Split('|');
+                        Page p = new Page 
+                        {
+                            pageNum = int.Parse(split[2]),
+                            isBookmarked = bool.Parse(split[3])
+                        };
+                        loadPages.Add(p);
+
                         Book loadBook = new Book
                         {
                             name = split[0],
                             state = State.Closed,
                             bookmarkAmount = int.Parse(split[1]),
-
+                            pages = loadPages
                         };
                     }
                 }
@@ -53,7 +61,7 @@ namespace Exam_1_EC
         /// <returns>A singular book</returns>
         public Book GetBookData(string isbn) 
         {
-
+            return null;
         }
 
         /// <summary>
