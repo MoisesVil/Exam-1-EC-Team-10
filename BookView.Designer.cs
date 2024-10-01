@@ -42,6 +42,7 @@
             this.flipRight.TabIndex = 0;
             this.flipRight.Text = "-->";
             this.flipRight.UseVisualStyleBackColor = true;
+            this.flipRight.Click += new System.EventHandler(this.flipRight_Click);
             // 
             // flipLeft
             // 
