@@ -10,6 +10,8 @@ namespace Exam_1_EC
     {
         public LibraryModel m;
 
+        public SyncLibrary sync;
+
         /// <summary>
         /// Constructor for the Controller Class
         /// </summary>
@@ -17,6 +19,11 @@ namespace Exam_1_EC
         public Controller(LibraryModel model)
         {
             this.m = model;
+        }
+
+        public void setSyncLib(SyncLibrary s)
+        {
+            this.sync = s;
         }
 
         /// <summary>
