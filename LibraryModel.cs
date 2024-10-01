@@ -42,6 +42,7 @@ namespace Exam_1_EC
                             bookmarkAmount = int.Parse(split[1]),
                             pages = loadPages
                         };
+                        books.Add(loadBook);
                     }
                 }
             }
