@@ -12,7 +12,7 @@ namespace Exam_1_EC
     /// </summary>
     public class LibraryModel
     {
-        private List<Book> books;
+        private List<Book> books = new List<Book>();
 
         /// <summary>
         /// Constructor
@@ -28,7 +28,7 @@ namespace Exam_1_EC
                     {
                         string line = sr.ReadLine();
                         string[] split = line.Split('|');
-                        foreach (string s in split[2].Split('+'))
+                        foreach (string s in split[3].Split('+'))
                         {
                             string[] splitPages = s.Split('%');
                             Page p = new Page
@@ -42,9 +42,11 @@ namespace Exam_1_EC
                         {
                             name = split[0],
                             state = State.Closed,
-                            bookmarkAmount = int.Parse(split[1]),
+                            isbn = split[1],
+                            bookmarkAmount = int.Parse(split[2]),
                             pages = loadPages
                         };
+                        books.Add(loadBook);
                     }
                 }
             }

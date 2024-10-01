@@ -24,7 +24,10 @@ namespace Exam_1_EC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LibraryView());
+
+            LibraryModel model = new LibraryModel();
+            LibraryView vM = new LibraryView(model);
+            Application.Run(vM);
         }
     }
 }

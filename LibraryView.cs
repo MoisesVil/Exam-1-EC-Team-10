@@ -13,9 +13,10 @@ namespace Exam_1_EC
 {
     public partial class LibraryView : Form
     {
-        public LibraryView()
+        public LibraryView(LibraryModel lM)
         {
             InitializeComponent();
+            libraryModel = lM;
             fillCloudLibOnOpen();
         }
 
@@ -33,7 +34,10 @@ namespace Exam_1_EC
         }
         public void fillCloudLibOnOpen()
         {
-            //syncLibHan();
+            foreach(Book b in libraryModel.GetData())
+            {
+                listCloudLib.Items.Add(b);
+            }
         }
 
         private void viewBookBtn(object sender, EventArgs e)
