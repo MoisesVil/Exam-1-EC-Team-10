@@ -14,6 +14,8 @@ namespace Exam_1_EC
 
     public delegate void GoToPage(int page, string isbn);
 
+    public delegate void AddBook(Book b);
+
     internal static class Program
     {
         /// <summary>
