@@ -71,5 +71,14 @@ namespace Exam_1_EC
         {
             m.GetBookData(isbn).CurrPage = page;
         }
+
+        /// <summary>
+        /// Adds a book to the library
+        /// </summary>
+        /// <param name="b">Book to be added</param>
+        public void AddBook(Book b)
+        {
+            m.Update(b);
+        }
     }
 }
