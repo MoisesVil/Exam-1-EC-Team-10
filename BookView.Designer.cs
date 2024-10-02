@@ -32,13 +32,15 @@
             this.flipLeft = new System.Windows.Forms.Button();
             this.bookmarkButton = new System.Windows.Forms.Button();
             this.pageText = new System.Windows.Forms.TextBox();
+            this.bookM = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // flipRight
             // 
-            this.flipRight.Location = new System.Drawing.Point(269, 437);
+            this.flipRight.Location = new System.Drawing.Point(202, 355);
+            this.flipRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flipRight.Name = "flipRight";
-            this.flipRight.Size = new System.Drawing.Size(83, 34);
+            this.flipRight.Size = new System.Drawing.Size(62, 28);
             this.flipRight.TabIndex = 0;
             this.flipRight.Text = "-->";
             this.flipRight.UseVisualStyleBackColor = true;
@@ -46,9 +48,10 @@
             // 
             // flipLeft
             // 
-            this.flipLeft.Location = new System.Drawing.Point(34, 437);
+            this.flipLeft.Location = new System.Drawing.Point(26, 355);
+            this.flipLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flipLeft.Name = "flipLeft";
-            this.flipLeft.Size = new System.Drawing.Size(83, 34);
+            this.flipLeft.Size = new System.Drawing.Size(62, 28);
             this.flipLeft.TabIndex = 1;
             this.flipLeft.Text = "<--";
             this.flipLeft.UseVisualStyleBackColor = true;
@@ -56,9 +59,10 @@
             // 
             // bookmarkButton
             // 
-            this.bookmarkButton.Location = new System.Drawing.Point(139, 434);
+            this.bookmarkButton.Location = new System.Drawing.Point(104, 353);
+            this.bookmarkButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bookmarkButton.Name = "bookmarkButton";
-            this.bookmarkButton.Size = new System.Drawing.Size(108, 41);
+            this.bookmarkButton.Size = new System.Drawing.Size(81, 33);
             this.bookmarkButton.TabIndex = 2;
             this.bookmarkButton.Text = "Bookmark";
             this.bookmarkButton.UseVisualStyleBackColor = true;
@@ -66,22 +70,36 @@
             // 
             // pageText
             // 
-            this.pageText.Location = new System.Drawing.Point(39, 25);
+            this.pageText.Location = new System.Drawing.Point(29, 20);
+            this.pageText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pageText.Multiline = true;
             this.pageText.Name = "pageText";
             this.pageText.ReadOnly = true;
-            this.pageText.Size = new System.Drawing.Size(318, 380);
+            this.pageText.Size = new System.Drawing.Size(240, 310);
             this.pageText.TabIndex = 3;
+            // 
+            // bookM
+            // 
+            this.bookM.AutoSize = true;
+            this.bookM.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.bookM.ForeColor = System.Drawing.Color.Transparent;
+            this.bookM.Location = new System.Drawing.Point(231, 5);
+            this.bookM.Name = "bookM";
+            this.bookM.Size = new System.Drawing.Size(67, 13);
+            this.bookM.TabIndex = 4;
+            this.bookM.Text = "Bookmarked";
             // 
             // BookView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 517);
+            this.ClientSize = new System.Drawing.Size(310, 420);
+            this.Controls.Add(this.bookM);
             this.Controls.Add(this.pageText);
             this.Controls.Add(this.bookmarkButton);
             this.Controls.Add(this.flipLeft);
             this.Controls.Add(this.flipRight);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "BookView";
             this.Text = "Book View";
             this.ResumeLayout(false);
@@ -95,5 +113,6 @@
         private System.Windows.Forms.Button flipLeft;
         private System.Windows.Forms.Button bookmarkButton;
         private System.Windows.Forms.TextBox pageText;
+        private System.Windows.Forms.Label bookM;
     }
 }

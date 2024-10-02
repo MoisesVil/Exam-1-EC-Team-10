@@ -57,7 +57,7 @@ namespace Exam_1_EC
             if (b.bookmarkAmount < 5)
             {
                 //remove bookmark
-                if (b.pages.ElementAt(b.CurrPage - 1).isBookmarked == true)
+                if (b.pages.ElementAt(b.CurrPage).isBookmarked == true)
                 {
                     b.pages.ElementAt(b.CurrPage - 1).isBookmarked = false;
                     b.bookmarkAmount -= 1;

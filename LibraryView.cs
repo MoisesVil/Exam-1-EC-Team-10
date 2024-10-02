@@ -67,7 +67,7 @@ namespace Exam_1_EC
             if(listBookLib.SelectedItem != null) selectedBook = listBookLib.SelectedItem as Book;
             if (listCloudLib.SelectedItem != null) selectedBook = listCloudLib.SelectedItem as Book;
 
-            using (BookView bookView = new BookView(selectedBook, libraryModel, flipDel, bookMark )) 
+            using (BookView bookView = new BookView(selectedBook, libraryModel, flipDel, bookMark)) 
             {
                 if (bookView.ShowDialog() == DialogResult.OK) { }
             }

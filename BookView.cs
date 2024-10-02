@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,12 +25,14 @@ namespace Exam_1_EC
         public BookView(Book selectedBook, LibraryModel m, FlipPage f, SetBookMark b)
         {
             InitializeComponent();
+
             this.selectedBook = selectedBook;
             this.Text = selectedBook.name;
             flipDel = f;
             model = m;
             bookMark = b;
             pageText.Text = "Page: " + selectedBook.CurrPage.ToString();
+            CheckBookMark();
         }
 
         /// <summary>
@@ -71,6 +74,23 @@ namespace Exam_1_EC
         private void UpdateFlipPage(int page) 
         {
             pageText.Text = "Page: " + page.ToString();
+        }
+        private void CheckBookMark()
+        {
+            foreach(Page p in selectedBook.pages)
+            {
+                if (p.pageNum == selectedBook.CurrPage)
+                {
+                    if (p.isBookmarked)
+                    {
+                        bookM.Visible = true;
+                    }
+                    else
+                    {
+                        bookM.Visible = false;
+                    }
+                }
+            }
         }
     }
 }
