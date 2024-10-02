@@ -59,14 +59,16 @@ namespace Exam_1_EC
                 //remove bookmark
                 if (b.pages.ElementAt(b.CurrPage).isBookmarked == true)
                 {
-                    b.pages.ElementAt(b.CurrPage - 1).isBookmarked = false;
-                    b.bookmarkAmount -= 1;
+                    m.GetBookData(isbn).pages.ElementAt(b.CurrPage).isBookmarked = false;
+                    m.GetBookData(isbn).bookmarkAmount -= 1;
+                    m.SetBookmark(b);
                 }
                 //set bookmark
-                if (b.pages.ElementAt(b.CurrPage - 1).isBookmarked == false) 
-                { 
-                    b.pages.ElementAt(b.CurrPage - 1).isBookmarked = true;
-                    b.bookmarkAmount += 1;
+                if (b.pages.ElementAt(b.CurrPage).isBookmarked == false) 
+                {
+                    m.GetBookData(isbn).pages.ElementAt(b.CurrPage).isBookmarked = true;
+                    m.GetBookData(isbn).bookmarkAmount += 1;
+                    m.SetBookmark(b);
                 }
             }
         }
