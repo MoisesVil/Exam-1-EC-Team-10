@@ -65,6 +65,7 @@ namespace Exam_1_EC
         private void bookmarkButton_Click(object sender, EventArgs e)
         {
             bookMark(selectedBook.CurrPage, selectedBook.isbn);
+            CheckBookMark();
         }
 
         /// <summary>
@@ -74,6 +75,7 @@ namespace Exam_1_EC
         private void UpdateFlipPage(int page) 
         {
             pageText.Text = "Page: " + page.ToString();
+            CheckBookMark();
         }
         private void CheckBookMark()
         {
