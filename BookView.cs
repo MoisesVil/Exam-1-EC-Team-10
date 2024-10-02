@@ -31,7 +31,6 @@ namespace Exam_1_EC
             model = m;
             bookMark = b;
             pageText.Text = "Page: " + selectedBook.CurrPage.ToString();
-            bookmarkButton_Click += CheckBookMark;
         }
 
         /// <summary>
@@ -84,11 +83,11 @@ namespace Exam_1_EC
                 {
                     if (p.isBookmarked)
                     {
-                        bookM.Text = "Bookmarked";
+                        bookM.Visible = true;
                     }
                     else
                     {
-                        bookM.Text = "";
+                        bookM.Visible = false;
                     }
                 }
             }
