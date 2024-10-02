@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.returnBtn = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // addToLibBtn
@@ -126,7 +127,7 @@
             this.returnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.returnBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.1F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.returnBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.returnBtn.Location = new System.Drawing.Point(4, 53);
+            this.returnBtn.Location = new System.Drawing.Point(224, 180);
             this.returnBtn.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.returnBtn.Name = "returnBtn";
             this.returnBtn.Size = new System.Drawing.Size(82, 33);
@@ -135,12 +136,23 @@
             this.returnBtn.UseVisualStyleBackColor = false;
             this.returnBtn.Click += new System.EventHandler(this.returnBtn_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(229, 140);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 39);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "--->";
+            // 
             // LibraryView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SaddleBrown;
             this.ClientSize = new System.Drawing.Size(530, 414);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.returnBtn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -166,6 +178,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button returnBtn;
+        private System.Windows.Forms.Label label4;
     }
 }
 
