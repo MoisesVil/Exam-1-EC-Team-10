@@ -8,7 +8,7 @@ namespace Exam_1_EC
 {
     public delegate void SyncLibrary();
 
-    public delegate void FlipPage(string isbn, bool flipRight);
+    public delegate int FlipPage(string isbn, bool flipRight);
 
     public delegate void SetBookMark(int page, string isbn);
 

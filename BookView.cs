@@ -39,10 +39,8 @@ namespace Exam_1_EC
         /// <param name="e">information about the event</param>
         private void flipRight_Click(object sender, EventArgs e)
         {
-            flipDel(selectedBook.isbn, true);
-            Book b = model.GetBookData(selectedBook.isbn);
-
-            Console.Write(b.CurrPage);
+            selectedBook.CurrPage = flipDel(selectedBook.isbn, true);
+            UpdateFlipPage(selectedBook.CurrPage);
         }
 
         /// <summary>
@@ -52,7 +50,8 @@ namespace Exam_1_EC
         /// <param name="e">information about the event</param>
         private void flipLeft_Click(object sender, EventArgs e)
         {
-            flipDel(selectedBook.isbn, false);
+            selectedBook.CurrPage = flipDel(selectedBook.isbn, false);
+            UpdateFlipPage(selectedBook.CurrPage);
         }
 
         /// <summary>
@@ -63,6 +62,15 @@ namespace Exam_1_EC
         private void bookmarkButton_Click(object sender, EventArgs e)
         {
             bookMark(selectedBook.CurrPage, selectedBook.isbn);
+        }
+
+        /// <summary>
+        /// Updates the page if flipped
+        /// </summary>
+        /// <param name="page">the page to flip to</param>
+        private void UpdateFlipPage(int page) 
+        {
+            pageText.Text = "Page: " + page.ToString();
         }
     }
 }

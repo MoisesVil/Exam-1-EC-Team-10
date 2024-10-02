@@ -30,7 +30,7 @@ namespace Exam_1_EC
         /// Method to flip a page in a book
         /// </summary>
         /// <param name="isbn">Book being read</param>
-        public void FlipPage(string isbn, bool flipRight)
+        public int FlipPage(string isbn, bool flipRight)
         {
             Book b = m.GetBookData(isbn);
 
@@ -42,6 +42,7 @@ namespace Exam_1_EC
             {
                 b.CurrPage -= 1;
             }
+            return b.CurrPage;
         }
 
         /// <summary>
