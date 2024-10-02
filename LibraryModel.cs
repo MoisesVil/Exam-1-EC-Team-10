@@ -145,5 +145,58 @@ namespace Exam_1_EC
                 }
             }
         }
+
+        public void SetBookmark(Book book)
+        {
+            using (StreamReader sr = new StreamReader("library.txt"))
+            {
+                using (StreamWriter sw = new StreamWriter("temp.txt"))
+                {
+                    string line;
+
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (!line.Contains(book.name))
+                        {
+                            sw.WriteLine(line);
+                        }
+                        else
+                        {
+                            StringBuilder str = new StringBuilder();
+                            str.Append($"{book.name}|{book.isbn}|{book.bookmarkAmount}|");
+                            string[] split = line.Split('|');
+                            int i = 0;
+                            foreach (string s in split[3].Split('+'))
+                            {
+                                string[] splitPages = s.Split('%');
+
+                                if (book.CurrPage == int.Parse(splitPages[0]))
+                                {
+                                    if (splitPages[1] == "True")
+                                    {
+                                        str.Append($"{book.pages[i].pageNum}%False");
+                                    }
+                                    else
+                                    {
+                                        str.Append($"{book.pages[i].pageNum}%True");
+                                    }
+                                }
+                                else
+                                {
+                                    str.Append($"{book.pages[i].pageNum}%{book.pages[i].isBookmarked}");
+                                }
+                                if ((i + 1) != book.pages.Count) { str.Append("+"); }
+
+                                i++;
+                            }
+                            sw.WriteLine(str);
+                        }
+                    }
+                }
+            }
+
+            File.Delete("library.txt");
+            File.Move("temp.txt", "library.txt");
+        }
     }
 }
