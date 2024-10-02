@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -28,7 +29,7 @@ namespace Exam_1_EC
         /// Gets the data of a book
         /// </summary>
         /// <returns>the list of books</returns>
-        public List<Book> GetData()
+        public List<Book> GetCloudData()
         {
             return cloudBooks;
         }
@@ -36,47 +37,79 @@ namespace Exam_1_EC
         /// Gets the data of a book
         /// </summary>
         /// <returns>the list of books</returns>
-        public List<Book> GetDataLibrary()
+        public List<Book> GetLibraryData()
         {
             return libraryBooks;
         }
+        
         /// <summary>
-        /// 
+        /// Gets a single book from an isbn number
         /// </summary>
-        /// <returns>A singular book</returns>
+        /// <param name="isbn">the isbn of the book</param>
+        /// <returns>the book</returns>
         public Book GetBookData(string isbn)
         {
+            foreach (Book b in cloudBooks) 
+            {
+                if (b.isbn.Equals(isbn)) return b;
+            }
+            foreach (Book b in libraryBooks)
+            {
+                if (b.isbn.Equals(isbn)) return b;
+            }
             return null;
         }
 
         /// <summary>
-        /// Updates the model
+        /// Updates the model by adding the book
         /// </summary>
+        /// <param name="book">the book to add</param>
         public void Update(Book book)
         {
+            if (libraryBooks.Contains(book)) return;
             libraryBooks.Add(book);
             string file = "library.txt";
+            StringBuilder str = new StringBuilder();
+            str.Append($"{book.name}|{book.isbn}|{book.bookmarkAmount}|");
             using (StreamWriter sw = new StreamWriter(file, true))
             {
-                sw.Write($"{book.name}|{book.isbn}|{book.bookmarkAmount}|");
                 int i = 0;
                 foreach (Page p in book.pages)
                 {
                     i++;
-                    sw.Write($"{p.pageNum}%{p.isBookmarked}");
-                    if (i != book.pages.Count) { sw.Write("+"); }
+                    str.Append($"{p.pageNum}%{p.isBookmarked}");
+                    if (i != book.pages.Count) { str.Append("+"); }
                 }
-                sw.WriteLine("");
+                sw.WriteLine(str);
             }
         }
 
-        public void Delete(Book book)
+        public void DeleteFromLib(Book book)
         {
-            cloudBooks.Remove(book);
+            libraryBooks.Remove(book);
+
+            using (StreamReader sr = new StreamReader("library.txt"))
+            {
+                using (StreamWriter sw = new StreamWriter("temp.txt"))
+                {
+                    string line;
+
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (!line.Contains(book.name))
+                        {
+                            sw.WriteLine(line);
+                        }
+                    }
+                }
+            }
+
+            File.Delete("library.txt");
+            File.Move("temp.txt", "library.txt");
         }
+
         private void LoadFile(string file)
         {
-            List<Page> loadPages = new List<Page>();
             bool check = false;
             if (file.Equals("bookLog.txt")) { check = true; }
             if (File.Exists(file))
@@ -85,6 +118,7 @@ namespace Exam_1_EC
                 {
                     while (!sr.EndOfStream)
                     {
+                        List<Page> loadPages = new List<Page>();
                         string line = sr.ReadLine();
                         string[] split = line.Split('|');
                         foreach (string s in split[3].Split('+'))
