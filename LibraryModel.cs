@@ -66,7 +66,7 @@ namespace Exam_1_EC
                     sw.Write($"{p.pageNum}%{p.isBookmarked}");
                     if (i != book.pages.Count) { sw.Write("+"); }
                 }
-                sw.WriteLine();
+                sw.WriteLine("");
             }
         }
 
