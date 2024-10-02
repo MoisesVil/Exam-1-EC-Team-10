@@ -13,23 +13,25 @@ namespace Exam_1_EC
 {
     public partial class LibraryView : Form
     {
-        public LibraryView(LibraryModel lM, AddBook ad, FlipPage f, SetBookMark b)
+        public LibraryView(LibraryModel lM, AddBook ad, FlipPage f, SetBookMark b , ReturnBook retBook)
         {
             InitializeComponent();
             libraryModel = lM;
             addBook = ad;
             fillCloudLibOnOpen();
             fillLibOnOpen();
+            this.retBook = retBook; 
             flipDel = f;
             bookMark = b;
             listBookLib.SelectedIndexChanged += ListBoxNewSelection;
             listCloudLib.SelectedIndexChanged += ListBoxNewSelection;
+            this.retBook = retBook;
         }
         private AddBook addBook;
         private LibraryModel libraryModel;
         private FlipPage flipDel;
         private SetBookMark bookMark;
-
+        private ReturnBook retBook;
         private void addToLibBtnClick(object sender, EventArgs e)
         {
             foreach (Book b in libraryModel.GetLibraryData()) 
@@ -99,6 +101,11 @@ namespace Exam_1_EC
                 viewABookBtn.Enabled = true;
                 addToLibBtn.Enabled = false;
             }
+        }
+
+        private void returnBtn_Click(object sender, EventArgs e)
+        {
+            retBook((Book)listBookLib.SelectedItem);
         }
     }
 }
