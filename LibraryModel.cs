@@ -68,12 +68,33 @@ namespace Exam_1_EC
                 }
                 sw.WriteLine();
             }
+            DeleteFromCloud(book);
         }
 
-        public void Delete(Book book)
+        public void DeleteFromCloud(Book book)
         {
             cloudBooks.Remove(book);
+
+            using (StreamReader sr = new StreamReader("bookLog.txt"))
+            {
+                using (StreamWriter sw = new StreamWriter("temp.txt"))
+                {
+                    string line;
+
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (!line.Contains(book.name))
+                        {
+                            sw.WriteLine(line);
+                        }
+                    }
+                }
+            }
+
+            File.Delete("bookLog.txt");
+            File.Move("temp.txt", "bookLog.txt");
         }
+
         private void LoadFile(string file)
         {
             List<Page> loadPages = new List<Page>();
