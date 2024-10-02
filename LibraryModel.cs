@@ -49,10 +49,6 @@ namespace Exam_1_EC
         /// <returns>the book</returns>
         public Book GetBookData(string isbn)
         {
-            foreach (Book b in cloudBooks) 
-            {
-                if (b.isbn.Equals(isbn)) return b;
-            }
             foreach (Book b in libraryBooks)
             {
                 if (b.isbn.Equals(isbn)) return b;
@@ -156,10 +152,12 @@ namespace Exam_1_EC
 
                     while ((line = sr.ReadLine()) != null)
                     {
+                        //If not current book, add back to file
                         if (!line.Contains(book.name))
                         {
                             sw.WriteLine(line);
                         }
+                        //Current book to edit bookmark
                         else
                         {
                             StringBuilder str = new StringBuilder();
@@ -170,17 +168,21 @@ namespace Exam_1_EC
                             {
                                 string[] splitPages = s.Split('%');
 
+                                //If this page needs to add/remove bookmark
                                 if (book.CurrPage == int.Parse(splitPages[0]))
                                 {
+                                    //remove bookmark
                                     if (splitPages[1] == "True")
                                     {
                                         str.Append($"{book.pages[i].pageNum}%False");
                                     }
+                                    //set bookmark
                                     else
                                     {
                                         str.Append($"{book.pages[i].pageNum}%True");
                                     }
                                 }
+                                //Add page and not change bookmark status
                                 else
                                 {
                                     str.Append($"{book.pages[i].pageNum}%{book.pages[i].isBookmarked}");

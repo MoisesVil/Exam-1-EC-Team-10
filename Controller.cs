@@ -64,7 +64,7 @@ namespace Exam_1_EC
                     m.SetBookmark(b);
                 }
                 //set bookmark
-                if (b.pages.ElementAt(b.CurrPage).isBookmarked == false) 
+                else if (b.pages.ElementAt(b.CurrPage).isBookmarked == false) 
                 {
                     m.GetBookData(isbn).pages.ElementAt(b.CurrPage).isBookmarked = true;
                     m.GetBookData(isbn).bookmarkAmount += 1;
