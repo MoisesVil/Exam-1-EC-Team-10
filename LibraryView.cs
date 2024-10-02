@@ -19,6 +19,7 @@ namespace Exam_1_EC
             libraryModel = lM;
             addBook = ad;
             fillCloudLibOnOpen();
+            SyncLibraryMethod();
         }
         private AddBook addBook;
         private LibraryModel libraryModel;
@@ -40,7 +41,7 @@ namespace Exam_1_EC
             BookView bV = new BookView();
             bV.Show();
         }
-        public void SycnLibrary()
+        public void SyncLibraryMethod()
         {
             foreach (Book b in libraryModel.GetDataLibrary())
             {

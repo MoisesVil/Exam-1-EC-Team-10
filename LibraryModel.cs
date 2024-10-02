@@ -22,6 +22,7 @@ namespace Exam_1_EC
         public LibraryModel()
         {
             LoadFile("bookLog.txt");
+            LoadFile("library.txt");
         }
         /// <summary>
         /// Gets the data of a book
@@ -57,11 +58,15 @@ namespace Exam_1_EC
             string file = "library.txt";
             using (StreamWriter sw = new StreamWriter(file, true))
             {
-                sw.WriteLine($"{book.name}|{book.isbn}|{book.bookmarkAmount}|");
+                sw.Write($"{book.name}|{book.isbn}|{book.bookmarkAmount}|");
+                int i = 0;
                 foreach (Page p in book.pages)
                 {
-                    sw.Write($"{p.pageNum}%{p.isBookmarked}+");
+                    i++;
+                    sw.Write($"{p.pageNum}%{p.isBookmarked}");
+                    if (i != book.pages.Count) { sw.Write("+"); }
                 }
+                sw.WriteLine();
             }
         }
 
