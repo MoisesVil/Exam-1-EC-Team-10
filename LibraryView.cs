@@ -25,7 +25,7 @@ namespace Exam_1_EC
 
         private void addToLibBtnClick(object sender, EventArgs e)
         {
-            syncLibHan(listCloudLib.SelectedValue);
+            //syncLibHan(listCloudLib.SelectedValue);
         }
         public void fillCloudLibOnOpen()
         {

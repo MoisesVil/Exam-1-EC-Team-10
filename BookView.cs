@@ -26,7 +26,7 @@ namespace Exam_1_EC
         /// <param name="e">information about the event</param>
         private void flipRight_Click(object sender, EventArgs e)
         {
-            flipDel();
+            //flipDel();
         }
     }
 }
