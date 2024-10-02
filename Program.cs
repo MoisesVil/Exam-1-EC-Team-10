@@ -30,7 +30,7 @@ namespace Exam_1_EC
             LibraryModel model = new LibraryModel();
             Controller cont = new Controller(model);
             LibraryView vM = new LibraryView(model,cont.AddBook);
-            cont.setSyncLib(vM.SycnLibrary);
+            cont.setSyncLib(vM.SyncLibraryMethod);
             Application.Run(vM);
         }
     }
