@@ -30,7 +30,6 @@ namespace Exam_1_EC
         private void addToLibBtnClick(object sender, EventArgs e)
         {
             addBook((Book)listCloudLib.SelectedItem);
-            listCloudLib.Items.Remove(listCloudLib.SelectedItem);
         }
         public void fillCloudLibOnOpen()
         {
