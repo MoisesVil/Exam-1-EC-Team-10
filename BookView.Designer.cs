@@ -52,6 +52,7 @@
             this.flipLeft.TabIndex = 1;
             this.flipLeft.Text = "<--";
             this.flipLeft.UseVisualStyleBackColor = true;
+            this.flipLeft.Click += new System.EventHandler(this.flipLeft_Click);
             // 
             // bookmarkButton
             // 
@@ -61,6 +62,7 @@
             this.bookmarkButton.TabIndex = 2;
             this.bookmarkButton.Text = "Bookmark";
             this.bookmarkButton.UseVisualStyleBackColor = true;
+            this.bookmarkButton.Click += new System.EventHandler(this.bookmarkButton_Click);
             // 
             // pageText
             // 
