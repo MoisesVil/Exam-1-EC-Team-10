@@ -36,7 +36,7 @@ namespace Exam_1_EC
 
             if (flipRight && (b.CurrPage + 1 <= b.pages.Count))
             {
-                b.CurrPage += 1;
+                m.GetBookData(isbn).CurrPage += 1;
             }
             else if (!flipRight && (b.CurrPage - 1 >= 0))
             {

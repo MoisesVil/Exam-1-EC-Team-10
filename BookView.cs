@@ -40,6 +40,9 @@ namespace Exam_1_EC
         private void flipRight_Click(object sender, EventArgs e)
         {
             flipDel(selectedBook.isbn, true);
+            Book b = model.GetBookData(selectedBook.isbn);
+
+            Console.Write(b.CurrPage);
         }
 
         /// <summary>
