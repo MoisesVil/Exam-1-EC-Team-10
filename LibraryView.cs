@@ -19,6 +19,7 @@ namespace Exam_1_EC
             libraryModel = lM;
             addBook = ad;
             fillCloudLibOnOpen();
+            fillLibOnOpen();
 
             listBookLib.SelectedIndexChanged += ListBoxNewSelection;
             listCloudLib.SelectedIndexChanged += ListBoxNewSelection;
@@ -32,9 +33,17 @@ namespace Exam_1_EC
         }
         public void fillCloudLibOnOpen()
         {
-            foreach (Book b in libraryModel.GetData())
+            foreach (Book b in libraryModel.GetCloudData())
             {
                 listCloudLib.Items.Add(b);
+            }
+        }
+
+        public void fillLibOnOpen()
+        {
+            foreach (Book b in libraryModel.GetLibraryData())
+            {
+                listBookLib.Items.Add(b);
             }
         }
 
@@ -45,7 +54,8 @@ namespace Exam_1_EC
         }
         public void SyncLibraryMethod()
         {
-            foreach (Book b in libraryModel.GetDataLibrary())
+            listBookLib.Items.Clear();
+            foreach (Book b in libraryModel.GetLibraryData())
             {
                 listBookLib.Items.Add(b);
             }

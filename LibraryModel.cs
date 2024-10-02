@@ -28,7 +28,7 @@ namespace Exam_1_EC
         /// Gets the data of a book
         /// </summary>
         /// <returns>the list of books</returns>
-        public List<Book> GetData()
+        public List<Book> GetCloudData()
         {
             return cloudBooks;
         }
@@ -36,7 +36,7 @@ namespace Exam_1_EC
         /// Gets the data of a book
         /// </summary>
         /// <returns>the list of books</returns>
-        public List<Book> GetDataLibrary()
+        public List<Book> GetLibraryData()
         {
             return libraryBooks;
         }
