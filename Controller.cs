@@ -87,6 +87,7 @@ namespace Exam_1_EC
         public void AddBook(Book b)
         {
             m.Update(b);
+            sync();
         }
     }
 }

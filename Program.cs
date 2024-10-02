@@ -28,7 +28,9 @@ namespace Exam_1_EC
             Application.SetCompatibleTextRenderingDefault(false);
 
             LibraryModel model = new LibraryModel();
-            LibraryView vM = new LibraryView(model);
+            Controller cont = new Controller(model);
+            LibraryView vM = new LibraryView(model,cont.AddBook);
+            cont.setSyncLib(vM.SycnLibrary);
             Application.Run(vM);
         }
     }

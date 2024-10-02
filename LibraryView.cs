@@ -13,19 +13,19 @@ namespace Exam_1_EC
 {
     public partial class LibraryView : Form
     {
-        public LibraryView(LibraryModel lM)
+        public LibraryView(LibraryModel lM, AddBook ad)
         {
             InitializeComponent();
             libraryModel = lM;
+            addBook = ad;
             fillCloudLibOnOpen();
         }
-
-        private SyncLibrary syncLibHan;
+        private AddBook addBook;
         private LibraryModel libraryModel;
 
         private void addToLibBtnClick(object sender, EventArgs e)
         {
-            //syncLibHan(listCloudLib.SelectedValue);
+            addBook((Book)listCloudLib.SelectedItem);
         }
         public void fillCloudLibOnOpen()
         {
@@ -39,6 +39,13 @@ namespace Exam_1_EC
         {
             BookView bV = new BookView();
             bV.Show();
+        }
+        public void SycnLibrary()
+        {
+            foreach (Book b in libraryModel.GetDataLibrary())
+            {
+                listBookLib.Items.Add(b);
+            }
         }
     }
 }

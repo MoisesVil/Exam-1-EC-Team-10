@@ -14,7 +14,7 @@ namespace Exam_1_EC
     public class LibraryModel
     {
         private List<Book> cloudBooks = new List<Book>();
-        private List<Book> LibraryBooks = new List<Book>();
+        private List<Book> libraryBooks = new List<Book>();
 
         /// <summary>
         /// Constructor
@@ -31,7 +31,14 @@ namespace Exam_1_EC
         {
             return cloudBooks;
         }
-
+        /// <summary>
+        /// Gets the data of a book
+        /// </summary>
+        /// <returns>the list of books</returns>
+        public List<Book> GetDataLibrary()
+        {
+            return libraryBooks;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -46,7 +53,7 @@ namespace Exam_1_EC
         /// </summary>
         public void Update(Book book)
         {
-            cloudBooks.Add(book);
+            libraryBooks.Add(book);
             string file = "library.txt";
             using (StreamWriter sw = new StreamWriter(file, true))
             {
@@ -94,7 +101,7 @@ namespace Exam_1_EC
                             pages = loadPages
                         };
                         if (check) { cloudBooks.Add(loadBook); }
-                        else { LibraryBooks.Add(loadBook); }
+                        else { libraryBooks.Add(loadBook); }
                     }
                 }
             }
