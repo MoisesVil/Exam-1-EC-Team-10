@@ -50,8 +50,14 @@ namespace Exam_1_EC
 
         private void viewBookBtn(object sender, EventArgs e)
         {
-            BookView bV = new BookView();
-            bV.Show();
+            Book selectedBook = new Book();
+            if(listBookLib.SelectedItem != null) selectedBook = listBookLib.SelectedItem as Book;
+            if (listCloudLib.SelectedItem != null) selectedBook = listCloudLib.SelectedItem as Book;
+
+            using (BookView bookView = new BookView(selectedBook)) 
+            {
+                if (bookView.ShowDialog() == DialogResult.OK) { }
+            }
         }
         public void SyncLibraryMethod()
         {
