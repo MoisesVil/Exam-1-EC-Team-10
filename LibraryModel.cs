@@ -81,14 +81,13 @@ namespace Exam_1_EC
                 }
                 sw.WriteLine(str);
             }
-            DeleteFromCloud(book);
         }
 
-        public void DeleteFromCloud(Book book)
+        public void DeleteFromLib(Book book)
         {
-            cloudBooks.Remove(book);
+            libraryBooks.Remove(book);
 
-            using (StreamReader sr = new StreamReader("bookLog.txt"))
+            using (StreamReader sr = new StreamReader("library.txt"))
             {
                 using (StreamWriter sw = new StreamWriter("temp.txt"))
                 {
@@ -104,8 +103,8 @@ namespace Exam_1_EC
                 }
             }
 
-            File.Delete("bookLog.txt");
-            File.Move("temp.txt", "bookLog.txt");
+            File.Delete("library.txt");
+            File.Move("temp.txt", "library.txt");
         }
 
         private void LoadFile(string file)
