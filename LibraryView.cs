@@ -31,7 +31,7 @@ namespace Exam_1_EC
         {
             foreach (Book b in libraryModel.GetLibraryData()) 
             {
-                if (b == (Book)listCloudLib.SelectedItem) 
+                if (b.Equals((Book)listCloudLib.SelectedItem)) 
                 {
                     MessageBox.Show("Book already added to library");
                     return;

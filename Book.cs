@@ -26,5 +26,11 @@ namespace Exam_1_EC
         {
             return name;
         }
+
+        public bool Equals(Book other)
+        {
+            return (this.name.Equals(other.name) && this.state == other.state &&
+                this.bookmarkAmount == other.bookmarkAmount && this.isbn.Equals(other.isbn) && this.CurrPage == other.CurrPage);
+        }
     }
 }
