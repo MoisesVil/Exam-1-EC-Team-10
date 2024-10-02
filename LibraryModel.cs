@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -40,18 +41,29 @@ namespace Exam_1_EC
         {
             return libraryBooks;
         }
+        
         /// <summary>
-        /// 
+        /// Gets a single book from an isbn number
         /// </summary>
-        /// <returns>A singular book</returns>
+        /// <param name="isbn">the isbn of the book</param>
+        /// <returns>the book</returns>
         public Book GetBookData(string isbn)
         {
+            foreach (Book b in cloudBooks) 
+            {
+                if (b.isbn.Equals(isbn)) return b;
+            }
+            foreach (Book b in libraryBooks)
+            {
+                if (b.isbn.Equals(isbn)) return b;
+            }
             return null;
         }
 
         /// <summary>
-        /// Updates the model
+        /// Updates the model by adding the book
         /// </summary>
+        /// <param name="book">the book to add</param>
         public void Update(Book book)
         {
             libraryBooks.Add(book);
@@ -70,10 +82,19 @@ namespace Exam_1_EC
             }
         }
 
+        /// <summary>
+        /// Deletes a book from the library
+        /// </summary>
+        /// <param name="book">the book to delete</param>
         public void Delete(Book book)
         {
             cloudBooks.Remove(book);
         }
+
+        /// <summary>
+        /// Loads the file into the library
+        /// </summary>
+        /// <param name="file">the file to load</param>
         private void LoadFile(string file)
         {
             List<Page> loadPages = new List<Page>();
