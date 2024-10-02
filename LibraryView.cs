@@ -13,19 +13,22 @@ namespace Exam_1_EC
 {
     public partial class LibraryView : Form
     {
-        public LibraryView(LibraryModel lM, AddBook ad)
+        public LibraryView(LibraryModel lM, AddBook ad, FlipPage f, SetBookMark b)
         {
             InitializeComponent();
             libraryModel = lM;
             addBook = ad;
             fillCloudLibOnOpen();
             fillLibOnOpen();
-
+            flipDel = f;
+            bookMark = b;
             listBookLib.SelectedIndexChanged += ListBoxNewSelection;
             listCloudLib.SelectedIndexChanged += ListBoxNewSelection;
         }
         private AddBook addBook;
         private LibraryModel libraryModel;
+        private FlipPage flipDel;
+        private SetBookMark bookMark;
 
         private void addToLibBtnClick(object sender, EventArgs e)
         {
@@ -62,7 +65,7 @@ namespace Exam_1_EC
             if(listBookLib.SelectedItem != null) selectedBook = listBookLib.SelectedItem as Book;
             if (listCloudLib.SelectedItem != null) selectedBook = listCloudLib.SelectedItem as Book;
 
-            using (BookView bookView = new BookView(selectedBook)) 
+            using (BookView bookView = new BookView(selectedBook, libraryModel, flipDel, bookMark )) 
             {
                 if (bookView.ShowDialog() == DialogResult.OK) { }
             }

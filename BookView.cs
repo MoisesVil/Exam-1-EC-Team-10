@@ -12,21 +12,23 @@ namespace Exam_1_EC
 {
     public partial class BookView : Form
     {
-        public FlipPage flipDel;
-        public LibraryModel model;
-        public SetBookMark bookMark;
-        public Book selectedBook;
+        private FlipPage flipDel;
+        private LibraryModel model;
+        private SetBookMark bookMark;
+        private Book selectedBook;
 
         /// <summary>
         /// Constructor for bookview
         /// </summary>
         /// <param name="selectedBook">the selected book</param>
-        public BookView(Book selectedBook)
+        public BookView(Book selectedBook, LibraryModel m, FlipPage f, SetBookMark b)
         {
             InitializeComponent();
             this.selectedBook = selectedBook;
             this.Text = selectedBook.name;
-
+            flipDel = f;
+            model = m;
+            bookMark = b;
             pageText.Text = "Page: " + selectedBook.CurrPage.ToString();
         }
 
