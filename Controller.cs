@@ -89,5 +89,10 @@ namespace Exam_1_EC
             m.Update(b);
             sync();
         }
+        public void ReturnBook(Book b)
+        {
+            m.DeleteFromLib(b);
+            sync();
+        }
     }
 }

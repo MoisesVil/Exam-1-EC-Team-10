@@ -16,6 +16,8 @@ namespace Exam_1_EC
 
     public delegate void AddBook(Book b);
 
+    public delegate void ReturnBook(Book b);
+
     internal static class Program
     {
         /// <summary>
@@ -29,7 +31,7 @@ namespace Exam_1_EC
 
             LibraryModel model = new LibraryModel();
             Controller cont = new Controller(model);
-            LibraryView vM = new LibraryView(model,cont.AddBook, cont.FlipPage, cont.SetBookmark);
+            LibraryView vM = new LibraryView(model,cont.AddBook, cont.FlipPage, cont.SetBookmark, cont.ReturnBook);
             cont.setSyncLib(vM.SyncLibraryMethod);
             Application.Run(vM);
         }
