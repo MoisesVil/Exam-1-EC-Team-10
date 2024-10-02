@@ -25,14 +25,13 @@ namespace Exam_1_EC
         public BookView(Book selectedBook, LibraryModel m, FlipPage f, SetBookMark b)
         {
             InitializeComponent();
-
             this.selectedBook = selectedBook;
             this.Text = selectedBook.name;
             flipDel = f;
             model = m;
             bookMark = b;
             pageText.Text = "Page: " + selectedBook.CurrPage.ToString();
-            CheckBookMark();
+            bookmarkButton_Click += CheckBookMark;
         }
 
         /// <summary>
@@ -83,11 +82,11 @@ namespace Exam_1_EC
                 {
                     if (p.isBookmarked)
                     {
-                        bookM.Visible = true;
+                        bookM.Text = "Bookmarked";
                     }
                     else
                     {
-                        bookM.Visible = false;
+                        bookM.Text = "";
                     }
                 }
             }
