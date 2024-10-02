@@ -27,10 +27,14 @@ namespace Exam_1_EC
             return name;
         }
 
+        /// <summary>
+        /// Checks if this book is the same as another
+        /// </summary>
+        /// <param name="other">the book to check against</param>
+        /// <returns>whether or not they are the same</returns>
         public bool Equals(Book other)
         {
-            return (this.name.Equals(other.name) && this.state == other.state &&
-                this.bookmarkAmount == other.bookmarkAmount && this.isbn.Equals(other.isbn) && this.CurrPage == other.CurrPage);
+            return (this.name.Equals(other.name) && this.isbn.Equals(other.isbn));
         }
     }
 }
