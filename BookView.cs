@@ -14,9 +14,20 @@ namespace Exam_1_EC
     {
         public FlipPage flipDel;
         public LibraryModel model;
-        public BookView()
+        public SetBookMark bookMark;
+        public Book selectedBook;
+
+        /// <summary>
+        /// Constructor for bookview
+        /// </summary>
+        /// <param name="selectedBook">the selected book</param>
+        public BookView(Book selectedBook)
         {
             InitializeComponent();
+            this.selectedBook = selectedBook;
+            this.Text = selectedBook.name;
+
+            pageText.Text = "Page: " + selectedBook.CurrPage.ToString();
         }
 
         /// <summary>
@@ -26,7 +37,27 @@ namespace Exam_1_EC
         /// <param name="e">information about the event</param>
         private void flipRight_Click(object sender, EventArgs e)
         {
-            //flipDel();
+            flipDel(selectedBook.isbn, true);
+        }
+
+        /// <summary>
+        /// Method to handle flipping a page to the left
+        /// </summary>
+        /// <param name="sender">the object signaling the event</param>
+        /// <param name="e">information about the event</param>
+        private void flipLeft_Click(object sender, EventArgs e)
+        {
+            flipDel(selectedBook.isbn, false);
+        }
+
+        /// <summary>
+        /// Method to handle setting a bookmark
+        /// </summary>
+        /// <param name="sender">the object signaling the event</param>
+        /// <param name="e">information about the event</param>
+        private void bookmarkButton_Click(object sender, EventArgs e)
+        {
+            bookMark(selectedBook.CurrPage, selectedBook.isbn);
         }
     }
 }
