@@ -29,6 +29,15 @@ namespace Exam_1_EC
 
         private void addToLibBtnClick(object sender, EventArgs e)
         {
+            foreach (Book b in libraryModel.GetLibraryData()) 
+            {
+                if (b == (Book)listCloudLib.SelectedItem) 
+                {
+                    MessageBox.Show("Book already added to library");
+                    return;
+                }
+            }
+
             addBook((Book)listCloudLib.SelectedItem);
         }
         public void fillCloudLibOnOpen()

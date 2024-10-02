@@ -66,6 +66,7 @@ namespace Exam_1_EC
         /// <param name="book">the book to add</param>
         public void Update(Book book)
         {
+            if (libraryBooks.Contains(book)) return;
             libraryBooks.Add(book);
             string file = "library.txt";
             StringBuilder str = new StringBuilder();
