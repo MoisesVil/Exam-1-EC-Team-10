@@ -56,17 +56,18 @@ namespace Exam_1_EC
         {
             libraryBooks.Add(book);
             string file = "library.txt";
+            StringBuilder str = new StringBuilder();
+            str.Append($"{book.name}|{book.isbn}|{book.bookmarkAmount}|");
             using (StreamWriter sw = new StreamWriter(file, true))
             {
-                sw.Write($"{book.name}|{book.isbn}|{book.bookmarkAmount}|");
                 int i = 0;
                 foreach (Page p in book.pages)
                 {
                     i++;
-                    sw.Write($"{p.pageNum}%{p.isBookmarked}");
-                    if (i != book.pages.Count) { sw.Write("+"); }
+                    str.Append($"{p.pageNum}%{p.isBookmarked}");
+                    if (i != book.pages.Count) { str.Append("+"); }
                 }
-                sw.WriteLine();
+                sw.WriteLine(str);
             }
             DeleteFromCloud(book);
         }
@@ -97,7 +98,6 @@ namespace Exam_1_EC
 
         private void LoadFile(string file)
         {
-            List<Page> loadPages = new List<Page>();
             bool check = false;
             if (file.Equals("bookLog.txt")) { check = true; }
             if (File.Exists(file))
@@ -106,6 +106,7 @@ namespace Exam_1_EC
                 {
                     while (!sr.EndOfStream)
                     {
+                        List<Page> loadPages = new List<Page>();
                         string line = sr.ReadLine();
                         string[] split = line.Split('|');
                         foreach (string s in split[3].Split('+'))
