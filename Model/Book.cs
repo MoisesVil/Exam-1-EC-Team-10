@@ -12,9 +12,13 @@ namespace Exam_1_EC
     public class Book
     {
         public string name;
+
         public List<Page> pages;
+
         public int bookmarkAmount;
+
         public string isbn;
+
         public int CurrPage;
 
         /// <summary>

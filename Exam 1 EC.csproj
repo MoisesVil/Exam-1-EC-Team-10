@@ -46,28 +46,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Book.cs" />
-    <Compile Include="BookView.cs">
+    <Compile Include="Model\Book.cs" />
+    <Compile Include="View\BookView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BookView.Designer.cs">
+    <Compile Include="View\BookView.Designer.cs">
       <DependentUpon>BookView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controller.cs" />
-    <Compile Include="LibraryModel.cs" />
-    <Compile Include="Page.cs" />
-    <Compile Include="LibraryView.cs">
+    <Compile Include="Controller\Controller.cs" />
+    <Compile Include="Model\LibraryModel.cs" />
+    <Compile Include="Model\Page.cs" />
+    <Compile Include="View\LibraryView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LibraryView.Designer.cs">
+    <Compile Include="View\LibraryView.Designer.cs">
       <DependentUpon>LibraryView.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="BookView.resx">
+    <EmbeddedResource Include="View\BookView.resx">
       <DependentUpon>BookView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LibraryView.resx">
+    <EmbeddedResource Include="View\LibraryView.resx">
       <DependentUpon>LibraryView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

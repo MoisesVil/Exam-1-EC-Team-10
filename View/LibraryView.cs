@@ -13,11 +13,16 @@ namespace Exam_1_EC
 {
     public partial class LibraryView : Form
     {
-        private AddBook addBook;
         private LibraryModel libraryModel;
+
+        private AddBook addBook;
+
         private FlipPage flipDel;
+
         private SetBookMark bookMark;
+
         private ReturnBook retBook;
+
         private GoToPage goToDel;
 
         /// <summary>
@@ -44,6 +49,7 @@ namespace Exam_1_EC
             this.retBook = retBook;
         }
 
+        #region BtnClicks
         /// <summary>
         /// Handles the code to add a book to your library
         /// </summary>
@@ -64,28 +70,6 @@ namespace Exam_1_EC
         }
 
         /// <summary>
-        /// fills the cloud with books in model
-        /// </summary>
-        private void fillCloudLibOnOpen()
-        {
-            foreach (Book b in libraryModel.GetCloudData())
-            {
-                listCloudLib.Items.Add(b);
-            }
-        }
-
-        /// <summary>
-        /// fills the library with books in model
-        /// </summary>
-        private void fillLibOnOpen()
-        {
-            foreach (Book b in libraryModel.GetLibraryData())
-            {
-                listBookLib.Items.Add(b);
-            }
-        }
-
-        /// <summary>
         /// Handles the code to view a book
         /// </summary>
         /// <param name="sender">object signaling the event</param>
@@ -93,26 +77,25 @@ namespace Exam_1_EC
         private void viewBookBtn(object sender, EventArgs e)
         {
             Book selectedBook = new Book();
-            if(listBookLib.SelectedItem != null) selectedBook = listBookLib.SelectedItem as Book;
+            if (listBookLib.SelectedItem != null) selectedBook = listBookLib.SelectedItem as Book;
             if (listCloudLib.SelectedItem != null) selectedBook = listCloudLib.SelectedItem as Book;
 
-            using (BookView bookView = new BookView(selectedBook, libraryModel, flipDel, bookMark, goToDel)) 
+            using (BookView bookView = new BookView(selectedBook, libraryModel, flipDel, bookMark, goToDel))
             {
                 if (bookView.ShowDialog() == DialogResult.OK) { }
             }
         }
 
         /// <summary>
-        /// syncs the library to the model
+        /// Handles the code to return a book
         /// </summary>
-        public void SyncLibraryMethod()
+        /// <param name="sender">object signaling the event</param>
+        /// <param name="e">information about the event</param>
+        private void returnBtn_Click(object sender, EventArgs e)
         {
-            listBookLib.Items.Clear();
-            foreach (Book b in libraryModel.GetLibraryData())
-            {
-                listBookLib.Items.Add(b);
-            }
+            retBook((Book)listBookLib.SelectedItem);
         }
+        #endregion
 
         /// <summary>
         /// Handles the selection change in any ListBox to enable/disable the Edit and Delete buttons
@@ -138,14 +121,40 @@ namespace Exam_1_EC
             }
         }
 
+        #region FillListBoxMethods
         /// <summary>
-        /// Handles the code to return a book
+        /// fills the cloud with books in model
         /// </summary>
-        /// <param name="sender">object signaling the event</param>
-        /// <param name="e">information about the event</param>
-        private void returnBtn_Click(object sender, EventArgs e)
+        private void fillCloudLibOnOpen()
         {
-            retBook((Book)listBookLib.SelectedItem);
+            foreach (Book b in libraryModel.GetCloudData())
+            {
+                listCloudLib.Items.Add(b);
+            }
         }
+
+        /// <summary>
+        /// fills the library with books in model
+        /// </summary>
+        private void fillLibOnOpen()
+        {
+            foreach (Book b in libraryModel.GetLibraryData())
+            {
+                listBookLib.Items.Add(b);
+            }
+        }
+
+        /// <summary>
+        /// syncs the library to the model
+        /// </summary>
+        public void SyncLibraryMethod()
+        {
+            listBookLib.Items.Clear();
+            foreach (Book b in libraryModel.GetLibraryData())
+            {
+                listBookLib.Items.Add(b);
+            }
+        }
+        #endregion
     }
 }

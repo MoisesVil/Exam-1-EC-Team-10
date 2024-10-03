@@ -13,11 +13,15 @@ namespace Exam_1_EC
 {
     public partial class BookView : Form
     {
-        private FlipPage flipDel;
         private LibraryModel model;
-        private SetBookMark bookMark;
-        private GoToPage goToDel;
+
         private Book selectedBook;
+
+        private FlipPage flipDel;
+
+        private SetBookMark bookMark;
+
+        private GoToPage goToDel;
 
         /// <summary>
         /// Constructor for bookview
@@ -38,6 +42,8 @@ namespace Exam_1_EC
             CheckEnabled();
             CheckBookMark();
         }
+
+        #region BtnClicks
 
         /// <summary>
         /// Method to handle flipping a page to the right
@@ -67,6 +73,20 @@ namespace Exam_1_EC
         }
 
         /// <summary>
+        /// Method to handle going to a page
+        /// </summary>
+        /// <param name="sender">the object signaling the event</param>
+        /// <param name="e">information about the event</param>
+        private void goToPageBtn_Click(object sender, EventArgs e)
+        {
+            int page = int.Parse(goToEntry.Text);
+            selectedBook.CurrPage = goToDel(page, selectedBook.isbn) - 1;
+            if (selectedBook.CurrPage >= 0 && selectedBook.CurrPage <= selectedBook.pages.Count) UpdateFlipPage(selectedBook.pages[selectedBook.CurrPage]);
+            else MessageBox.Show("Invalid page selection.");
+            goToEntry.Clear();
+        }
+
+        /// <summary>
         /// Method to handle setting a bookmark
         /// </summary>
         /// <param name="sender">the object signaling the event</param>
@@ -76,18 +96,9 @@ namespace Exam_1_EC
             bookMark(selectedBook.CurrPage, selectedBook.isbn);
             CheckBookMark();
         }
+        #endregion
 
-        /// <summary>
-        /// Updates the page if flipped
-        /// </summary>
-        /// <param name="p">the page to flip to</param>
-        private void UpdateFlipPage(Page p) 
-        {
-            CheckEnabled();
-            pageNumLabel.Text = "Page: " + p.pageNum.ToString();
-            pageText.Text = p.text;
-            CheckBookMark();
-        }
+        #region Checks
 
         /// <summary>
         /// Checks if the current page has a bookmark
@@ -110,7 +121,6 @@ namespace Exam_1_EC
             }
         }
 
-
         /// <summary>
         /// Enables and disables flip page buttons accordingly
         /// </summary>
@@ -127,19 +137,18 @@ namespace Exam_1_EC
                 flipRight.Enabled = false;
             }
         }
+        #endregion
 
-		/// <summary>
-		/// Method to handle going to a page
-		/// </summary>
-		/// <param name="sender">the object signaling the event</param>
-		/// <param name="e">information about the event</param>
-		private void goToPageBtn_Click(object sender, EventArgs e)
-		{
-            int page = int.Parse(goToEntry.Text);
-            selectedBook.CurrPage = goToDel(page, selectedBook.isbn) - 1;
-			if (selectedBook.CurrPage >= 0 && selectedBook.CurrPage <= selectedBook.pages.Count) UpdateFlipPage(selectedBook.pages[selectedBook.CurrPage]);
-			else MessageBox.Show("Invalid page selection.");
-            goToEntry.Clear();
-		}
-	}
+        /// <summary>
+        /// Updates the page if flipped
+        /// </summary>
+        /// <param name="p">the page to flip to</param>
+        private void UpdateFlipPage(Page p)
+        {
+            CheckEnabled();
+            pageNumLabel.Text = "Page: " + p.pageNum.ToString();
+            pageText.Text = p.text;
+            CheckBookMark();
+        }
+    }
 }

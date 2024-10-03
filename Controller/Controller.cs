@@ -32,6 +32,7 @@ namespace Exam_1_EC
             this.sync = s;
         }
 
+        #region PageMethods
         /// <summary>
         /// Method to flip a page in a book
         /// </summary>
@@ -49,6 +50,20 @@ namespace Exam_1_EC
                 b.CurrPage -= 1;
             }
             return b.CurrPage;
+        }
+
+        /// <summary>
+        /// Method to handle going to a specific page
+        /// </summary>
+        /// <param name="pageNum">The page number to flip to</param>
+        /// <param name="isbn">the isbn of the book</param>
+        /// <returns>the page you flipped to</returns>
+        public int GoToPage(int pageNum, string isbn)
+        {
+            Book book = m.GetBookData(isbn);
+            if (pageNum >= 0 && pageNum <= book.pages.Count) book.CurrPage = pageNum;
+
+            return book.CurrPage;
         }
 
         /// <summary>
@@ -86,26 +101,14 @@ namespace Exam_1_EC
                 MessageBox.Show("Exceeded bookmark amount -- Can only bookmark 5 pages!");
             }
 		}
+        #endregion
 
+        #region BookMethods
         /// <summary>
-        /// Method to handle going to a specific page
+        /// Adds a book to the library
         /// </summary>
-        /// <param name="pageNum">The page number to flip to</param>
-        /// <param name="isbn">the isbn of the book</param>
-        /// <returns>the page you flipped to</returns>
-		public int GoToPage(int pageNum, string isbn)
-		{
-			Book book = m.GetBookData(isbn);
-			if (pageNum >= 0 && pageNum <= book.pages.Count) book.CurrPage = pageNum;
-
-			return book.CurrPage;
-		}
-
-		/// <summary>
-		/// Adds a book to the library
-		/// </summary>
-		/// <param name="b">Book to be added</param>
-		public void AddBook(Book b)
+        /// <param name="b">Book to be added</param>
+        public void AddBook(Book b)
         {
             m.Update(b);
             sync();
@@ -120,5 +123,6 @@ namespace Exam_1_EC
             m.DeleteFromLib(b);
             sync();
         }
+        #endregion
     }
 }

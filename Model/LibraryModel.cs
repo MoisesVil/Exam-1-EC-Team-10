@@ -15,6 +15,7 @@ namespace Exam_1_EC
     public class LibraryModel
     {
         private List<Book> cloudBooks = new List<Book>();
+
         private List<Book> libraryBooks = new List<Book>();
 
         /// <summary>
@@ -25,6 +26,8 @@ namespace Exam_1_EC
             LoadFile("bookLog.txt");
             LoadFile("library.txt");
         }
+
+        #region GetData
         /// <summary>
         /// Gets the data of a book
         /// </summary>
@@ -33,6 +36,7 @@ namespace Exam_1_EC
         {
             return cloudBooks;
         }
+
         /// <summary>
         /// Gets the data of a book
         /// </summary>
@@ -55,7 +59,9 @@ namespace Exam_1_EC
             }
             return null;
         }
+        #endregion
 
+        #region Updates
         /// <summary>
         /// Updates the model by adding the book
         /// </summary>
@@ -106,48 +112,6 @@ namespace Exam_1_EC
 
             File.Delete("library.txt");
             File.Move("temp.txt", "library.txt");
-        }
-        
-        /// <summary>
-        /// Method to read in book data from text file 
-        /// </summary>
-        /// <param name="file">File to read from</param>
-        private void LoadFile(string file)
-        {
-            bool check = false;
-            if (file.Equals("bookLog.txt")) { check = true; }
-            if (File.Exists(file))
-            {
-                using (StreamReader sr = new StreamReader(file))
-                {
-                    while (!sr.EndOfStream)
-                    {
-                        List<Page> loadPages = new List<Page>();
-                        string line = sr.ReadLine();
-                        string[] split = line.Split('|');
-                        foreach (string s in split[3].Split('+'))
-                        {
-                            string[] splitPages = s.Split('%');
-                            Page p = new Page
-                            {
-                                pageNum = int.Parse(splitPages[0]),
-                                isBookmarked = bool.Parse(splitPages[1]),
-                                text = splitPages[2]
-                            };
-                            loadPages.Add(p);
-                        }
-                        Book loadBook = new Book
-                        {
-                            name = split[0],
-                            isbn = split[1],
-                            bookmarkAmount = int.Parse(split[2]),
-                            pages = loadPages
-                        };
-                        if (check) { cloudBooks.Add(loadBook); }
-                        else { libraryBooks.Add(loadBook); }
-                    }
-                }
-            }
         }
 
         /// <summary>
@@ -212,6 +176,49 @@ namespace Exam_1_EC
             File.Delete("library.txt");
             File.Move("temp.txt", "library.txt");
             File.Delete("temp.txt");
+        }
+        #endregion
+
+        /// <summary>
+        /// Method to read in book data from text file 
+        /// </summary>
+        /// <param name="file">File to read from</param>
+        private void LoadFile(string file)
+        {
+            bool check = false;
+            if (file.Equals("bookLog.txt")) { check = true; }
+            if (File.Exists(file))
+            {
+                using (StreamReader sr = new StreamReader(file))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        List<Page> loadPages = new List<Page>();
+                        string line = sr.ReadLine();
+                        string[] split = line.Split('|');
+                        foreach (string s in split[3].Split('+'))
+                        {
+                            string[] splitPages = s.Split('%');
+                            Page p = new Page
+                            {
+                                pageNum = int.Parse(splitPages[0]),
+                                isBookmarked = bool.Parse(splitPages[1]),
+                                text = splitPages[2]
+                            };
+                            loadPages.Add(p);
+                        }
+                        Book loadBook = new Book
+                        {
+                            name = split[0],
+                            isbn = split[1],
+                            bookmarkAmount = int.Parse(split[2]),
+                            pages = loadPages
+                        };
+                        if (check) { cloudBooks.Add(loadBook); }
+                        else { libraryBooks.Add(loadBook); }
+                    }
+                }
+            }
         }
     }
 }
