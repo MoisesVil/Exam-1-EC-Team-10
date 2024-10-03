@@ -33,12 +33,13 @@
             this.bookmarkButton = new System.Windows.Forms.Button();
             this.pageText = new System.Windows.Forms.TextBox();
             this.bookM = new System.Windows.Forms.Label();
+            this.pageNumLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // flipRight
             // 
             this.flipRight.Location = new System.Drawing.Point(202, 355);
-            this.flipRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flipRight.Margin = new System.Windows.Forms.Padding(2);
             this.flipRight.Name = "flipRight";
             this.flipRight.Size = new System.Drawing.Size(62, 28);
             this.flipRight.TabIndex = 0;
@@ -49,7 +50,7 @@
             // flipLeft
             // 
             this.flipLeft.Location = new System.Drawing.Point(26, 355);
-            this.flipLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flipLeft.Margin = new System.Windows.Forms.Padding(2);
             this.flipLeft.Name = "flipLeft";
             this.flipLeft.Size = new System.Drawing.Size(62, 28);
             this.flipLeft.TabIndex = 1;
@@ -60,7 +61,7 @@
             // bookmarkButton
             // 
             this.bookmarkButton.Location = new System.Drawing.Point(104, 353);
-            this.bookmarkButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bookmarkButton.Margin = new System.Windows.Forms.Padding(2);
             this.bookmarkButton.Name = "bookmarkButton";
             this.bookmarkButton.Size = new System.Drawing.Size(81, 33);
             this.bookmarkButton.TabIndex = 2;
@@ -71,7 +72,7 @@
             // pageText
             // 
             this.pageText.Location = new System.Drawing.Point(29, 20);
-            this.pageText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pageText.Margin = new System.Windows.Forms.Padding(2);
             this.pageText.Multiline = true;
             this.pageText.Name = "pageText";
             this.pageText.ReadOnly = true;
@@ -89,17 +90,27 @@
             this.bookM.TabIndex = 4;
             this.bookM.Text = "Bookmarked";
             // 
+            // pageNumLabel
+            // 
+            this.pageNumLabel.AutoSize = true;
+            this.pageNumLabel.Location = new System.Drawing.Point(13, 4);
+            this.pageNumLabel.Name = "pageNumLabel";
+            this.pageNumLabel.Size = new System.Drawing.Size(79, 13);
+            this.pageNumLabel.TabIndex = 5;
+            this.pageNumLabel.Text = "pageNumLabel";
+            // 
             // BookView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(310, 420);
+            this.Controls.Add(this.pageNumLabel);
             this.Controls.Add(this.bookM);
             this.Controls.Add(this.pageText);
             this.Controls.Add(this.bookmarkButton);
             this.Controls.Add(this.flipLeft);
             this.Controls.Add(this.flipRight);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BookView";
             this.Text = "Book View";
             this.ResumeLayout(false);
@@ -114,5 +125,6 @@
         private System.Windows.Forms.Button bookmarkButton;
         private System.Windows.Forms.TextBox pageText;
         private System.Windows.Forms.Label bookM;
+        private System.Windows.Forms.Label pageNumLabel;
     }
 }

@@ -30,7 +30,9 @@ namespace Exam_1_EC
             flipDel = f;
             model = m;
             bookMark = b;
-            pageText.Text = "Page: " + selectedBook.CurrPage.ToString();
+            selectedBook.CurrPage = 0;
+            pageNumLabel.Text = "Page: " + selectedBook.pages[0].pageNum.ToString();
+            CheckEnabled();
         }
 
         /// <summary>
@@ -40,8 +42,12 @@ namespace Exam_1_EC
         /// <param name="e">information about the event</param>
         private void flipRight_Click(object sender, EventArgs e)
         {
+            CheckEnabled();
             selectedBook.CurrPage = flipDel(selectedBook.isbn, true);
-            UpdateFlipPage(selectedBook.CurrPage);
+            if (selectedBook.pages.Count > selectedBook.CurrPage)
+            {
+                UpdateFlipPage(selectedBook.pages[selectedBook.CurrPage]);
+            }
         }
 
         /// <summary>
@@ -51,8 +57,9 @@ namespace Exam_1_EC
         /// <param name="e">information about the event</param>
         private void flipLeft_Click(object sender, EventArgs e)
         {
+            CheckEnabled();
             selectedBook.CurrPage = flipDel(selectedBook.isbn, false);
-            UpdateFlipPage(selectedBook.CurrPage);
+            UpdateFlipPage(selectedBook.pages[selectedBook.CurrPage]);
         }
 
         /// <summary>
@@ -70,9 +77,10 @@ namespace Exam_1_EC
         /// Updates the page if flipped
         /// </summary>
         /// <param name="page">the page to flip to</param>
-        private void UpdateFlipPage(int page) 
+        private void UpdateFlipPage(Page p) 
         {
-            pageText.Text = "Page: " + page.ToString();
+            CheckEnabled();
+            pageNumLabel.Text = "Page: " + p.pageNum.ToString();
             CheckBookMark();
         }
         private void CheckBookMark()
@@ -90,6 +98,19 @@ namespace Exam_1_EC
                         bookM.Visible = false;
                     }
                 }
+            }
+        }
+        private void CheckEnabled()
+        {
+            flipLeft.Enabled = true;
+            flipRight.Enabled = true;
+            if(selectedBook.CurrPage == 0)
+            {
+                flipLeft.Enabled = false;
+            }
+            else if(selectedBook.CurrPage == selectedBook.pages.Count - 1)
+            {
+                flipRight.Enabled = false;
             }
         }
     }
