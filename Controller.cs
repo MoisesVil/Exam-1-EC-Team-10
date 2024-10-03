@@ -10,9 +10,9 @@ namespace Exam_1_EC
 {
     internal class Controller
     {
-        public LibraryModel m;
+        private LibraryModel m;
 
-        public SyncLibrary sync;
+        private SyncLibrary sync;
 
         /// <summary>
         /// Constructor for the Controller Class

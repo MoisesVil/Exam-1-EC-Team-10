@@ -139,7 +139,6 @@ namespace Exam_1_EC
                         Book loadBook = new Book
                         {
                             name = split[0],
-                            state = State.Closed,
                             isbn = split[1],
                             bookmarkAmount = int.Parse(split[2]),
                             pages = loadPages

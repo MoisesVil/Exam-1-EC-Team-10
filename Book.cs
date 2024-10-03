@@ -12,7 +12,6 @@ namespace Exam_1_EC
     public class Book
     {
         public string name;
-        public State state;
         public List<Page> pages;
         public int bookmarkAmount;
         public string isbn;

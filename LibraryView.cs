@@ -13,6 +13,13 @@ namespace Exam_1_EC
 {
     public partial class LibraryView : Form
     {
+        private AddBook addBook;
+        private LibraryModel libraryModel;
+        private FlipPage flipDel;
+        private SetBookMark bookMark;
+        private ReturnBook retBook;
+        private GoToPage goToDel;
+
         /// <summary>
         /// constructor for the library view
         /// </summary>
@@ -36,12 +43,6 @@ namespace Exam_1_EC
             listCloudLib.SelectedIndexChanged += ListBoxNewSelection;
             this.retBook = retBook;
         }
-        private AddBook addBook;
-        private LibraryModel libraryModel;
-        private FlipPage flipDel;
-        private SetBookMark bookMark;
-        private ReturnBook retBook;
-        private GoToPage goToDel;
 
         /// <summary>
         /// Handles the code to add a book to your library
@@ -65,7 +66,7 @@ namespace Exam_1_EC
         /// <summary>
         /// fills the cloud with books in model
         /// </summary>
-        public void fillCloudLibOnOpen()
+        private void fillCloudLibOnOpen()
         {
             foreach (Book b in libraryModel.GetCloudData())
             {
@@ -76,7 +77,7 @@ namespace Exam_1_EC
         /// <summary>
         /// fills the library with books in model
         /// </summary>
-        public void fillLibOnOpen()
+        private void fillLibOnOpen()
         {
             foreach (Book b in libraryModel.GetLibraryData())
             {
