@@ -34,6 +34,7 @@ namespace Exam_1_EC
             pageNumLabel.Text = "Page: " + selectedBook.pages[0].pageNum.ToString();
             pageText.Text = selectedBook.pages[0].text;
             CheckEnabled();
+            CheckBookMark();
         }
 
         /// <summary>
@@ -89,7 +90,7 @@ namespace Exam_1_EC
         {
             foreach(Page p in selectedBook.pages)
             {
-                if (p.pageNum == selectedBook.CurrPage)
+                if (p.pageNum == selectedBook.CurrPage + 1)
                 {
                     if (p.isBookmarked)
                     {

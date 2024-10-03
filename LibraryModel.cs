@@ -170,7 +170,7 @@ namespace Exam_1_EC
                                 string[] splitPages = s.Split('%');
 
                                 //If this page needs to add/remove bookmark
-                                if (book.CurrPage == int.Parse(splitPages[0]))
+                                if (book.CurrPage + 1 == int.Parse(splitPages[0]))
                                 {
                                     //remove bookmark
                                     if (splitPages[1] == "True")
@@ -200,6 +200,7 @@ namespace Exam_1_EC
 
             File.Delete("library.txt");
             File.Move("temp.txt", "library.txt");
+            File.Delete("temp.txt");
         }
     }
 }

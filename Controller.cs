@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Exam_1_EC
 {
@@ -53,23 +54,31 @@ namespace Exam_1_EC
         public void SetBookmark(int page, string isbn)
         {
             Book b = m.GetBookData(isbn);
-
-            if (b.bookmarkAmount < 5)
-            {
+            bool check = false;
                 //remove bookmark
-                if (b.pages.ElementAt(b.CurrPage).isBookmarked == true)
+                if (b.pages[(b.CurrPage)].isBookmarked == true)
                 {
                     m.GetBookData(isbn).pages.ElementAt(b.CurrPage).isBookmarked = false;
                     m.GetBookData(isbn).bookmarkAmount -= 1;
                     m.SetBookmark(b);
+                    check = true;
                 }
-                //set bookmark
-                else if (b.pages.ElementAt(b.CurrPage).isBookmarked == false) 
+            if (b.bookmarkAmount < 5)
+            {
+                if (!check)
                 {
-                    m.GetBookData(isbn).pages.ElementAt(b.CurrPage).isBookmarked = true;
-                    m.GetBookData(isbn).bookmarkAmount += 1;
-                    m.SetBookmark(b);
+                    //set bookmark
+                    if (b.pages[(b.CurrPage)].isBookmarked == false)
+                    {
+                        m.GetBookData(isbn).pages.ElementAt(b.CurrPage).isBookmarked = true;
+                        m.GetBookData(isbn).bookmarkAmount += 1;
+                        m.SetBookmark(b);
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Exceeded bookmark amount -- Can only bookmark 5 pages!");
             }
         }
 
