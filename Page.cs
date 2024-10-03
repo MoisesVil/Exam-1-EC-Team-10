@@ -13,5 +13,6 @@ namespace Exam_1_EC
     {
         public int pageNum;
         public bool isBookmarked;
+        public string text;
     }
 }

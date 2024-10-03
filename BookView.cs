@@ -32,6 +32,7 @@ namespace Exam_1_EC
             bookMark = b;
             selectedBook.CurrPage = 0;
             pageNumLabel.Text = "Page: " + selectedBook.pages[0].pageNum.ToString();
+            pageText.Text = selectedBook.pages[0].text;
             CheckEnabled();
         }
 
@@ -81,6 +82,7 @@ namespace Exam_1_EC
         {
             CheckEnabled();
             pageNumLabel.Text = "Page: " + p.pageNum.ToString();
+            pageText.Text = p.text;
             CheckBookMark();
         }
         private void CheckBookMark()

@@ -73,7 +73,7 @@ namespace Exam_1_EC
                 foreach (Page p in book.pages)
                 {
                     i++;
-                    str.Append($"{p.pageNum}%{p.isBookmarked}");
+                    str.Append($"{p.pageNum}%{p.isBookmarked}%{p.text}");
                     if (i != book.pages.Count) { str.Append("+"); }
                 }
                 sw.WriteLine(str);
@@ -123,7 +123,8 @@ namespace Exam_1_EC
                             Page p = new Page
                             {
                                 pageNum = int.Parse(splitPages[0]),
-                                isBookmarked = bool.Parse(splitPages[1])
+                                isBookmarked = bool.Parse(splitPages[1]),
+                                text = splitPages[2]
                             };
                             loadPages.Add(p);
                         }
@@ -174,18 +175,18 @@ namespace Exam_1_EC
                                     //remove bookmark
                                     if (splitPages[1] == "True")
                                     {
-                                        str.Append($"{book.pages[i].pageNum}%False");
+                                        str.Append($"{book.pages[i].pageNum}%False%{book.pages[i].text}");
                                     }
                                     //set bookmark
                                     else
                                     {
-                                        str.Append($"{book.pages[i].pageNum}%True");
+                                        str.Append($"{book.pages[i].pageNum}%True%{book.pages[i].text}");
                                     }
                                 }
                                 //Add page and not change bookmark status
                                 else
                                 {
-                                    str.Append($"{book.pages[i].pageNum}%{book.pages[i].isBookmarked}");
+                                    str.Append($"{book.pages[i].pageNum}%{book.pages[i].isBookmarked}%{book.pages[i].text}");
                                 }
                                 if ((i + 1) != book.pages.Count) { str.Append("+"); }
 
