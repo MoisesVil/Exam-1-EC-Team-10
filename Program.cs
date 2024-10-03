@@ -12,7 +12,7 @@ namespace Exam_1_EC
 
     public delegate void SetBookMark(int page, string isbn);
 
-    public delegate void GoToPage(int page, string isbn);
+    public delegate int GoToPage(int page, string isbn);
 
     public delegate void AddBook(Book b);
 
@@ -31,7 +31,7 @@ namespace Exam_1_EC
 
             LibraryModel model = new LibraryModel();
             Controller cont = new Controller(model);
-            LibraryView vM = new LibraryView(model,cont.AddBook, cont.FlipPage, cont.SetBookmark, cont.ReturnBook);
+            LibraryView vM = new LibraryView(model,cont.AddBook, cont.FlipPage, cont.SetBookmark, cont.ReturnBook, cont.GoToPage);
             cont.setSyncLib(vM.SyncLibraryMethod);
             Application.Run(vM);
         }

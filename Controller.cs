@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Exam_1_EC
 {
@@ -22,6 +23,10 @@ namespace Exam_1_EC
             this.m = model;
         }
 
+        /// <summary>
+        /// Sets the sync library delegate
+        /// </summary>
+        /// <param name="s">the delegate to set</param>
         public void setSyncLib(SyncLibrary s)
         {
             this.sync = s;
@@ -80,27 +85,36 @@ namespace Exam_1_EC
             {
                 MessageBox.Show("Exceeded bookmark amount -- Can only bookmark 5 pages!");
             }
-        }
+		}
 
         /// <summary>
-        /// Go to a certain page in a book
+        /// Method to handle going to a specific page
         /// </summary>
-        /// <param name="page">Page to go to</param>
-        /// <param name="isbn">Book being read</param>
-        public void GoToPage(int page, string isbn)
-        {
-            m.GetBookData(isbn).CurrPage = page;
-        }
+        /// <param name="pageNum">The page number to flip to</param>
+        /// <param name="isbn">the isbn of the book</param>
+        /// <returns>the page you flipped to</returns>
+		public int GoToPage(int pageNum, string isbn)
+		{
+			Book book = m.GetBookData(isbn);
+			if (pageNum >= 0 && pageNum <= book.pages.Count) book.CurrPage = pageNum;
 
-        /// <summary>
-        /// Adds a book to the library
-        /// </summary>
-        /// <param name="b">Book to be added</param>
-        public void AddBook(Book b)
+			return book.CurrPage;
+		}
+
+		/// <summary>
+		/// Adds a book to the library
+		/// </summary>
+		/// <param name="b">Book to be added</param>
+		public void AddBook(Book b)
         {
             m.Update(b);
             sync();
         }
+
+        /// <summary>
+        /// Returns a book to the cloud
+        /// </summary>
+        /// <param name="b">the book to return</param>
         public void ReturnBook(Book b)
         {
             m.DeleteFromLib(b);

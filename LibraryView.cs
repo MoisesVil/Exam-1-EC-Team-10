@@ -21,7 +21,7 @@ namespace Exam_1_EC
         /// <param name="f">the flip page delegate</param>
         /// <param name="b">the set bookmark delegate</param>
         /// <param name="retBook">the returnbook delegate</param>
-        public LibraryView(LibraryModel lM, AddBook ad, FlipPage f, SetBookMark b , ReturnBook retBook)
+        public LibraryView(LibraryModel lM, AddBook ad, FlipPage f, SetBookMark b , ReturnBook retBook, GoToPage g)
         {
             InitializeComponent();
             libraryModel = lM;
@@ -31,6 +31,7 @@ namespace Exam_1_EC
             this.retBook = retBook; 
             flipDel = f;
             bookMark = b;
+            goToDel = g;
             listBookLib.SelectedIndexChanged += ListBoxNewSelection;
             listCloudLib.SelectedIndexChanged += ListBoxNewSelection;
             this.retBook = retBook;
@@ -40,6 +41,7 @@ namespace Exam_1_EC
         private FlipPage flipDel;
         private SetBookMark bookMark;
         private ReturnBook retBook;
+        private GoToPage goToDel;
 
         /// <summary>
         /// Handles the code to add a book to your library
@@ -93,7 +95,7 @@ namespace Exam_1_EC
             if(listBookLib.SelectedItem != null) selectedBook = listBookLib.SelectedItem as Book;
             if (listCloudLib.SelectedItem != null) selectedBook = listCloudLib.SelectedItem as Book;
 
-            using (BookView bookView = new BookView(selectedBook, libraryModel, flipDel, bookMark)) 
+            using (BookView bookView = new BookView(selectedBook, libraryModel, flipDel, bookMark, goToDel)) 
             {
                 if (bookView.ShowDialog() == DialogResult.OK) { }
             }

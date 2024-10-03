@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Exam_1_EC
 {
+    /// <summary>
+    /// The states of a book
+    /// </summary>
     public enum State
     {
         Open,
