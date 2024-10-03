@@ -80,6 +80,10 @@ namespace Exam_1_EC
             }
         }
 
+        /// <summary>
+        /// Method to remove books from the library
+        /// </summary>
+        /// <param name="book">Book to remove</param>
         public void DeleteFromLib(Book book)
         {
             libraryBooks.Remove(book);
@@ -103,7 +107,11 @@ namespace Exam_1_EC
             File.Delete("library.txt");
             File.Move("temp.txt", "library.txt");
         }
-
+        
+        /// <summary>
+        /// Method to read in book data from text file 
+        /// </summary>
+        /// <param name="file">File to read from</param>
         private void LoadFile(string file)
         {
             bool check = false;
@@ -143,6 +151,10 @@ namespace Exam_1_EC
             }
         }
 
+        /// <summary>
+        /// Method to set or remove a bookmark in a book
+        /// </summary>
+        /// <param name="book">Book to add/remove bookmark in</param>
         public void SetBookmark(Book book)
         {
             using (StreamReader sr = new StreamReader("library.txt"))
